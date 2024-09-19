@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext,useEffect, } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { UserProvider, UserContext } from './context/UserContext';
+import { useNavigate } from 'react-router-dom';
 import ProtectedRoute from './componentes/ProtectedRouter';
 import Logout from './componentes/logout';
 import Carrito from './componentes/cliente/Pedidos/Carrito';
@@ -34,11 +35,22 @@ import EditarEventos from './componentes/administrador/eventos/EditarEventos';
 import GestionEventos from "./componentes/administrador/eventos/ModificarEventos";
 
 const App = () => {
-  const { role } = useContext(UserContext);
-  console.log('App - role:', role); 
+  const { role, setRole } = useContext(UserContext);
+  const navigate = useNavigate();
+
+
+
+  useEffect(() => {
+    const storedRole = localStorage.getItem('role');
+    if (storedRole) {
+      setRole(storedRole);
+    } else {
+      navigate('/login'); // Redirige a la página de inicio de sesión si no hay rol
+    }
+  }, [setRole, navigate]);
+
+  // Determina el componente de la barra de navegación según el rol
   let NavBarComponent = BarraNormal; // Valor por defecto
-
-
   if (role === 'administrador') {
     NavBarComponent = BarraAdmin;
   } else if (role === 'Cliente') {

@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
-import '../../barras/BarraCliente';
+import BarraNormal from '../../barras/barra_normal'
 import BarraCliente from '../../barras/BarraCliente';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 const RegistroEventosCliente = () => {
   const [eventos, setEventos] = useState([]);
@@ -15,12 +16,13 @@ const RegistroEventosCliente = () => {
   const [estadoFiltro, setEstadoFiltro] = useState(''); // Filtro para el estado del evento
   const [eventosNoEncontrados, setEventosNoEncontrados] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Estado para manejar autenticación
+  const navigate = useNavigate(); // Hook para la navegación
 
   useEffect(() => {
     // Verifica si el usuario está autenticado (puedes modificar esto según tu lógica)
     const user = localStorage.getItem('user');
     setIsAuthenticated(!!user);
-    
+
     axios.get('http://localhost:3000/eventos') 
       .then(respuesta => {
         setEventos(respuesta.data);
@@ -52,7 +54,6 @@ const RegistroEventosCliente = () => {
       }
     });
 
-  // Actualizar el estado si no se encuentran eventos después de la búsqueda
   useEffect(() => {
     setEventosNoEncontrados(terminoBusqueda && eventosFiltrados.length === 0);
   }, [terminoBusqueda, eventosFiltrados]);
@@ -66,16 +67,28 @@ const RegistroEventosCliente = () => {
   }, {});
 
   const handleInscripcion = async (evento) => {
+    if (!isAuthenticated) {
+      Swal.fire({
+        title: 'Debes iniciar sesión',
+        text: 'Por favor, regístrate o inicia sesión para inscribirte en eventos.',
+        icon: 'warning',
+        confirmButtonText: 'OK',
+        preConfirm: () => {
+          navigate('/FormularioRegistro'); // Redirige al formulario de registro
+        }
+      });
+      return;
+    }
+
     try {
       if (evento.cantidadCupos > 0) {
         const nuevaCantidadCupos = evento.cantidadCupos - 1;
-  
-        // Hacer una solicitud para actualizar los cupos en la API
+
         const response = await axios.put(`http://localhost:3000/eventos/${evento.id}`, {
           ...evento,
           cantidadCupos: nuevaCantidadCupos,
         });
-  
+
         if (response.status === 200) {
           Swal.fire({
             title: 'Inscripción exitosa',
@@ -83,8 +96,7 @@ const RegistroEventosCliente = () => {
             icon: 'success',
             confirmButtonText: 'OK'
           });
-  
-          // Actualizar el estado local para reflejar el nuevo número de cupos
+
           setEventos(prevEventos =>
             prevEventos.map(ev =>
               ev.id === evento.id ? { ...ev, cantidadCupos: nuevaCantidadCupos } : ev
@@ -110,9 +122,6 @@ const RegistroEventosCliente = () => {
     }
   };
 
-
-
-
   const ordenCategorias = [
     'charlas',
     'teatro',
@@ -127,8 +136,9 @@ const RegistroEventosCliente = () => {
 
 
     return (
+      
       <div className="rounded overflow-hidden shadow-lg flex flex-col transform hover:scale-105 transition duration-300 ease-in-out mt-12"> 
-        {isAuthenticated ? <BarraCliente /> : <BarraNormal />}
+        
         <div className="relative">
           <img className="w-full" src={evento.imagen} alt={evento.nombre} />
           <div className="absolute inset-0 bg-gray-900 opacity-25 hover:bg-transparent transition duration-300"></div>

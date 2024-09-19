@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
-
+import { UserContext } from '../../../context/UserContext';
 
 const ProductosCliente = () => {
   const navigate = useNavigate();
   const [productos, setProductos] = useState([]);
+  const { role } = useContext(UserContext); 
   const [categoria, setCategoria] = useState('');
   const [terminoBusqueda, setTerminoBusqueda] = useState('');
   const [ordenamiento, setOrdenamiento] = useState('asc');

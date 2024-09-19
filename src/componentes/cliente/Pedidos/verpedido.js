@@ -14,20 +14,22 @@ const Pedidos = ({ userId }) => {
         const fetchPedidos = async () => {
             try {
                 const response = await axios.get(`http://localhost:3000/pedidos?idusuario=${userId}`);
+                console.log(response.data); // Verifica la estructura de los datos
                 const pedidosFiltrados = response.data
-                    .filter(pedido => pedido.usuarioId === userId) // Asegúrate de que esto es correcto
+                    .filter(pedido => pedido.idusuario === userId)
                     .filter(pedido => pedido.estado === 'activo')
                     .filter(pedido => {
                         const hora = new Date(`1970-01-01T${pedido.hora}`).getHours();
                         return hora >= 11 && hora <= 18;
                     })
                     .sort((a, b) => new Date(`${a.fecha}T${a.hora}`) - new Date(`${b.fecha}T${b.hora}`));
-    
+            
                 setPedidos(pedidosFiltrados);
             } catch (error) {
                 console.error("Error al obtener los datos de los pedidos:", error);
             }
         };
+        
     
         fetchPedidos();
     }, [userId]);

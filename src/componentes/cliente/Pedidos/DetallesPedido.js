@@ -115,7 +115,9 @@ const DetallesPedido = () => {
           title: 'Éxito',
           text: `Tu pedido ha sido enviado con éxito. Estado: Pendiente`,
           icon: 'success',
-          confirmButtonText: 'OK',
+        }).then(() => {
+          // Redirige a la página de ver pedido al dar clic en "OK"
+          navigate('/pedidos'); // Cambia '/ver-pedido' por la ruta de la página que deseas.
         });
   
         // Reiniciar formulario
@@ -286,19 +288,34 @@ const DetallesPedido = () => {
         {/* Modal de políticas de privacidad */}
         {modalVisible && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-            <div className="bg-white p-4 rounded shadow-md">
-              <h2 className="text-lg font-semibold mb-2">Políticas de Privacidad</h2>
-              <p className="mb-4">Aquí van las políticas de privacidad...</p>
-              <div className="flex justify-end">
-                <button onClick={acceptTerms} className="text-blue-500 mr-2">
-                  Aceptar
-                </button>
-                <button onClick={toggleModal} className="text-red-500">
-                  Cancelar
-                </button>
-              </div>
+          <div className="bg-white p-4 rounded shadow-md">
+            <h2 className="text-lg font-semibold mb-2">Políticas de Entrega de Pedidos</h2>
+            <p className="mb-4">Por favor, revisa nuestras políticas de entrega:</p>
+            <ul className="list-disc list-inside mb-4">
+              <li>Los pedidos serán entregados 15 minutos antes o despues de la fecha del pedido</li> 
+              <li>Las entregas se realizarán de lunes a domingo, excluyendo festivos.</li>
+              <li>Se recomienda proporcionar instrucciones específicas para la entrega, como ubicación exacta o puerta de acceso.</li>
+              <li>Los pedidos se entregarán en condiciones óptimas de temperatura y presentación.</li>
+              <li>Las tarifas de entrega pueden variar según la ubicación del cliente y se informarán antes de confirmar el pedido.</li>
+            </ul>
+            <div className="flex justify-end">
+              <button
+                onClick={acceptTerms}
+                className="bg-yellow-500 text-black font-semibold py-2 px-4 rounded mr-2 hover:bg-yellow-600 transition"
+              >
+                Aceptar
+              </button>
+              <button
+                onClick={toggleModal}
+                className="bg-yellow-500 text-black font-semibold py-2 px-4 rounded hover:bg-yellow-600 transition"
+              >
+                Cancelar
+              </button>
             </div>
+
           </div>
+        </div>
+        
         )}
       </div>
     </div>
