@@ -1,0 +1,315 @@
+{
+  "usuarios": [
+    {
+      "id": "a917",
+      "rol": "mesero",
+      "nombre": "nicole ",
+      "apellido": "perez",
+      "telefono": "3148812180",
+      "numero_documento": "1019027709",
+      "tipo_documento": "Cedula de ciudadania",
+      "barrio": "santa rita",
+      "email": "nicoleorjuela1552@gmail.com",
+      "contrasena": "Hola1234#",
+      "horario": "Tarde",
+      "titulo": "",
+      "estado": "Activo"
+    },
+    {
+      "id": "39a8",
+      "rol": "administrador",
+      "nombre": "Johan",
+      "apellido": "martinez",
+      "telefono": "3052970187",
+      "numero_documento": "1020023666",
+      "tipo_documento": "Cedula de ciudadania",
+      "barrio": "santa rita",
+      "email": "johan12@gmail.com",
+      "contrasena": "Hola12345#",
+      "horario": "",
+      "titulo": "administrador",
+      "estado": "Activo"
+    },
+    {
+      "id": "5bae",
+      "nombre": "Nicole",
+      "apellido": "Orjuela",
+      "telefono": "3114778362",
+      "numero_documento": "1019087044",
+      "tipo_documento": "Cedula de ciudadania",
+      "direccion": "cll 133 # 156 a 20",
+      "barrio": "santa cecilia",
+      "email": "Nicole1526@gmail.com",
+      "contrasena": "Hola1234#",
+      "rol": "Cliente",
+      "estado": "Activo",
+      "aceptaTerminos": true
+    },
+    {
+      "id": "fdaf",
+      "nombre": "Nicolas ",
+      "apellido": "Fandino",
+      "telefono": "3148812180",
+      "numero_documento": "41355906",
+      "tipo_documento": "Cedula de ciudadania",
+      "direccion": "cll 133 # 156 a 20",
+      "barrio": "santa rita",
+      "email": "nicolas15@gmail.com",
+      "contrasena": "Hola1234#",
+      "rol": "Cliente",
+      "estado": "Activo",
+      "aceptaTerminos": true
+    },
+    {
+      "id": "fc30",
+      "nombre": "nicole ",
+      "apellido": "orjulea",
+      "telefono": "3223918335",
+      "numero_documento": "44545645456",
+      "tipo_documento": "Cedula de ciudadania",
+      "direccion": "Cll 133 # 156 A - 20",
+      "barrio": "santa rita",
+      "email": "nso@hotmail.com",
+      "contrasena": "Hola12345#",
+      "rol": "Cliente",
+      "estado": "Activo",
+      "aceptaTerminos": true
+    },
+    {
+      "id": "ebf2",
+      "nombre": "brownie",
+      "apellido": "sfkgfg",
+      "telefono": "3148812180",
+      "numero_documento": "54545454",
+      "tipo_documento": "Cedula de extranjeria",
+      "direccion": "cll 133 # 156 a 20",
+      "barrio": "santa rita",
+      "email": "b55555b52@gmail.com",
+      "contrasena": "Hola12345#",
+      "rol": "Cliente",
+      "estado": "Activo",
+      "aceptaTerminos": true
+    },
+    {
+      "id": "1c4f",
+      "nombre": "pastel",
+      "apellido": "martinez",
+      "telefono": "3148812180",
+      "numero_documento": "A123456789",
+      "tipo_documento": "Cedula de extranjeria",
+      "direccion": "cll 133 # 156 a 20",
+      "barrio": "dfsdfsdf",
+      "email": "lianaand56rea05@gmail.com",
+      "contrasena": "Hola1234#",
+      "rol": "Cliente",
+      "estado": "Activo",
+      "aceptaTerminos": true
+    },
+    {
+      "id": "e509",
+      "nombre": "nicole ",
+      "apellido": "sfkgfg",
+      "telefono": "3052970187",
+      "numero_documento": "58756656589",
+      "tipo_documento": "Cedula de ciudadania",
+      "direccion": "cll 133 # 156 a 20",
+      "barrio": "santa rita",
+      "email": "est.na6555vila89@smart.edu.co",
+      "contrasena": "Hola1234#",
+      "rol": "Cliente",
+      "estado": "Activo",
+      "aceptaTerminos": true
+    },
+    {
+      "nombre": "Sofia ",
+      "apellido": "oruela",
+      "telefono": "3052970187",
+      "numero_documento": "156565665",
+      "rol": "Cliente",
+      "tipo_documento": "Cedula de ciudadania",
+      "direccion": "cll 133 # 156 a 20",
+      "barrio": "santa rita",
+      "email": "lydabrigittep@hotmail.com",
+      "id": "2e8d"
+    }
+  ],
+  "reservas": [
+    {
+      "id": "80fa",
+      "nombre": "Johan ",
+      "celular": "1232132343",
+      "correo": "as@asd.sad",
+      "numerodoc": "4578986545",
+      "numeroPersonas": "4",
+      "fecha": "2025-03-04",
+      "horaInicio": "04:03",
+      "decoracion": "Aniversario",
+      "actividades": "Dibujo_colores",
+      "comentarios": "Prueba api",
+      "estado_reserva": "Activa",
+      "tipo_reserva": "reserva_mesa",
+      "terminos": true
+    }
+  ],
+  "productos": [
+    {
+      "id": "1715",
+      "nombre": "camarones ",
+      "precio": "15.000",
+      "descripcion": "camarones en coctel de salsa de piña",
+      "imagen": "https://comedera.com/wp-content/uploads/sites/9/2023/02/camarones-al-mojo-de-ajo-shutterstock_2120733179.jpg",
+      "categoria": "entradas",
+      "estado": "activo",
+      "fechaRegistro": "2024-09-09T23:02:16.919Z"
+    },
+    {
+      "id": "5fdb",
+      "nombre": "Langostinos crocantes",
+      "precio": "38.000",
+      "descripcion": "Exquisitos langostinos empanizados en una capa crujiente, acompañados de una deliciosa salsa de ajo y limón. ",
+      "imagen": "https://www.hogarmania.com/archivos/202012/karl66740320-langostinos-crujientes-con-mahonesa-receta-joseba-arguinano-1280x720x80xX.jpg",
+      "categoria": "entradas",
+      "estado": "activo",
+      "fechaRegistro": "2024-09-12T03:46:51.140Z"
+    },
+    {
+      "id": "6495",
+      "nombre": "ceviche tilapia",
+      "precio": "30.000",
+      "descripcion": "Los ingredientes para un ceviche de tilapia son tilapia fresca, jugo de limón, cebolla morada, tomate, cilantro, chile o ají (opcional), ajo, sal, pimienta, aceite de oliva, aguacate (opcional), lechuga para decorar y tostadas o chips para acompañar",
+      "imagen": "https://mojo.generalmills.com/api/public/content/CsSALdeyO0aFKpBrTh32Pg_gmi_hi_res_jpeg.jpeg?v=c68d0c4f&t=16e3ce250f244648bef28c5949fb99ff",
+      "categoria": "entradas",
+      "estado": "activo",
+      "fechaRegistro": "2024-09-12T03:50:20.571Z"
+    }
+  ],
+  "pedidos": [
+    {
+      "id": 453798,
+      "fecha": "2024-09-19",
+      "hora": "15:09",
+      "metodoPago": "credito",
+      "total": "15.00",
+      "tipoEntrega": "recogida",
+      "cantidad": 1,
+      "detallesPedido": "jjlkjkkl",
+      "estado": "activo",
+      "usuario": {
+        "nombre": "Nicole",
+        "apellido": "Orjuela",
+        "direccion": "cll 133 # 156 a 20",
+        "barrio": "santa cecilia"
+      },
+      "carrito": [
+        {
+          "id": "1715",
+          "nombre": "camarones ",
+          "precio": "15.000",
+          "descripcion": "camarones en coctel de salsa de piña",
+          "imagen": "https://comedera.com/wp-content/uploads/sites/9/2023/02/camarones-al-mojo-de-ajo-shutterstock_2120733179.jpg",
+          "categoria": "entradas",
+          "estado": "activo",
+          "fechaRegistro": "2024-09-09T23:02:16.919Z",
+          "cantidad": 1
+        }
+      ]
+    },
+    {
+      "id": 114516,
+      "fecha": "2024-09-19",
+      "hora": "14:10",
+      "metodoPago": "credito",
+      "total": "30.00",
+      "tipoEntrega": "recogida",
+      "cantidad": 2,
+      "detallesPedido": "dfdsf<df<sdf",
+      "estado": "activo",
+      "usuario": {
+        "nombre": "Nicole",
+        "apellido": "Orjuela",
+        "direccion": "cll 133 # 156 a 20",
+        "barrio": "santa cecilia"
+      },
+      "carrito": [
+        {
+          "id": "1715",
+          "nombre": "camarones ",
+          "precio": "15.000",
+          "descripcion": "camarones en coctel de salsa de piña",
+          "imagen": "https://comedera.com/wp-content/uploads/sites/9/2023/02/camarones-al-mojo-de-ajo-shutterstock_2120733179.jpg",
+          "categoria": "entradas",
+          "estado": "activo",
+          "fechaRegistro": "2024-09-09T23:02:16.919Z",
+          "cantidad": 2
+        }
+      ]
+    },
+    {
+      "id": "0184",
+      "idpedido": 45693,
+      "fecha": "2024-09-19",
+      "hora": "15:13",
+      "metodoPago": "credito",
+      "total": "45.000",
+      "tipoEntrega": "recogida",
+      "cantidad": 3,
+      "detallesPedido": "xcl<lc,<sd",
+      "estado": "activo",
+      "usuario": {
+        "nombre": "Nicole",
+        "apellido": "Orjuela",
+        "numero_documento": "1019087044",
+        "direccion": "cll 133 # 156 a 20",
+        "barrio": "santa cecilia",
+        "idusuario": "5bae"
+      },
+      "carrito": [
+        {
+          "id": "1715",
+          "nombre": "camarones ",
+          "precio": "15.000",
+          "descripcion": "camarones en coctel de salsa de piña",
+          "imagen": "https://comedera.com/wp-content/uploads/sites/9/2023/02/camarones-al-mojo-de-ajo-shutterstock_2120733179.jpg",
+          "categoria": "entradas",
+          "estado": "activo",
+          "fechaRegistro": "2024-09-09T23:02:16.919Z",
+          "cantidad": 3
+        }
+      ]
+    },
+    {
+      "id": "87ae",
+      "idpedido": 296519,
+      "fecha": "2024-09-19",
+      "hora": "16:01",
+      "metodoPago": "credito",
+      "total": "450.00",
+      "tipoEntrega": "recogida",
+      "cantidad": 3,
+      "detallesPedido": ",m,mñldkd",
+      "estado": "activo",
+      "usuario": {
+        "nombre": "Nicole",
+        "apellido": "Orjuela",
+        "numero_documento": "1019087044",
+        "direccion": "cll 133 # 156 a 20",
+        "barrio": "santa cecilia",
+        "idusuario": "5bae"
+      },
+      "carrito": [
+        {
+          "id": "1715",
+          "nombre": "camarones ",
+          "precio": "15.000",
+          "descripcion": "camarones en coctel de salsa de piña",
+          "imagen": "https://comedera.com/wp-content/uploads/sites/9/2023/02/camarones-al-mojo-de-ajo-shutterstock_2120733179.jpg",
+          "categoria": "entradas",
+          "estado": "activo",
+          "fechaRegistro": "2024-09-09T23:02:16.919Z",
+          "cantidad": 3
+        }
+      ]
+    }
+  ],
+  "eventos": []
+}
