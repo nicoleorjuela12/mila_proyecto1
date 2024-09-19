@@ -22,7 +22,6 @@ import GestionReservaMesa from "./componentes/administrador/Reservas/GestionRese
 import GestionReservasCliente from "./componentes/cliente/reservas/reservascliente";
 import RegistroEventosCliente from "./componentes/cliente/eventos/EventosCliente";
 import RegistroEventos from "./componentes/administrador/eventos/RegistroEventos";
-import GestionEventos from "./componentes/administrador/eventos/ModificarEventos";
 import FormularioInscripcion from "./componentes/cliente/eventos/FormularioInscripcion";
 import ProductosCliente from './componentes/cliente/Productos/productos';
 import GestionProductos from './componentes/administrador/Productos/GestionProductos';
@@ -30,6 +29,9 @@ import Servicios from './componentes/servicios';
 import PerfilUsuario from './componentes/Perfil/PerfilUsuario';
 import DetallesPedido from './componentes/cliente/Pedidos/DetallesPedido';
 import Pedido from './componentes/cliente/Pedidos/verpedido';
+import MisInscripciones from './componentes/cliente/eventos/MisInscripciones';
+import EditarEventos from './componentes/administrador/eventos/EditarEventos';
+import GestionEventos from "./componentes/administrador/eventos/ModificarEventos";
 
 const App = () => {
   const { role } = useContext(UserContext);
@@ -128,11 +130,7 @@ const App = () => {
               <RegistroEventos />
             </ProtectedRoute>
           } />
-          <Route path="/ModificarEventos" element={
-            <ProtectedRoute>
-              <GestionEventos />
-            </ProtectedRoute>
-          } />
+        
           <Route path="/FormularioInscripcion" element={
             <ProtectedRoute>
               <FormularioInscripcion />
@@ -153,6 +151,22 @@ const App = () => {
           <Route path="/pedidos" element={
             <ProtectedRoute>
               <Pedido />
+            </ProtectedRoute>
+          } />
+
+          <Route path="/MisInscripciones" element={
+            <ProtectedRoute>
+              <MisInscripciones/>
+            </ProtectedRoute>
+          } />
+          <Route path="/EditarEventos/:id" element={
+            <ProtectedRoute>
+              <EditarEventos/>
+            </ProtectedRoute>
+          } />
+          <Route path="/ModificarEventos" element={
+            <ProtectedRoute>
+              <GestionEventos/>
             </ProtectedRoute>
           } />
         </Routes>

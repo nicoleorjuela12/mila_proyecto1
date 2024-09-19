@@ -8,6 +8,7 @@ import { UserContext } from '../../context/UserContext'; // Asegúrate de import
 const BarraCliente = () => {
   const [showReservasMenu, setShowReservasMenu] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [showEventosMenu, setShowEventosMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showMobileReservasMenu, setShowMobileReservasMenu] = useState(false);
   const navigate = useNavigate();
@@ -26,6 +27,9 @@ const BarraCliente = () => {
       }
       if (!e.target.closest('#mobile-reservas-button') && !e.target.closest('#mobile-reservas-menu')) {
         setShowMobileReservasMenu(false);
+      }
+      if (!e.target.closest('#eventos-button') && !e.target.closest('#eventos-menu')) {
+        setShowEventosMenu(false);
       }
 
     };
@@ -100,9 +104,19 @@ const BarraCliente = () => {
             <Link to="/pedidos" className="flex items-center text-gray-900 hover:text-yellow-800 cursor-pointer transition-colors duration-300 font-semibold no-underline">
               <FontAwesomeIcon icon={faShoppingBasket} className="mr-2" /> Pedidos
             </Link>
-            <Link to="/eventos" className="flex items-center text-gray-900 hover:text-yellow-800 cursor-pointer transition-colors duration-300 font-semibold no-underline">
-              <FontAwesomeIcon icon={faCalendarCheck} className="mr-2" /> Eventos
-            </Link>
+            <div className="relative">
+              <Link
+                id="eventos-button"
+                className="flex items-center text-gray-900 hover:text-yellow-800 cursor-pointer transition-colors duration-300 font-semibold no-underline"
+                onClick={() => setShowEventosMenu(!showEventosMenu)}
+              >
+                <FontAwesomeIcon icon={faCalendarCheck} className="mr-2" /> Eventos
+              </Link>
+              <div id="eventos-menu" className={`dropdown-menu mt-2 rounded-lg shadow-lg bg-white ${showEventosMenu ? 'show' : ''}`}>
+                <Link to="/EventosCliente" className="block px-4 py-2">Eventos</Link>
+                <Link to="/MisInscripciones" className="block px-4 py-2">Mis Inscripciones</Link>
+              </div>
+            </div>
             <Link to="/servicios" className="flex items-center text-gray-900 hover:text-yellow-800 cursor-pointer transition-colors duration-300 font-semibold no-underline">
               <FontAwesomeIcon icon={faConciergeBell} className="mr-2" /> Servicios
             </Link>
@@ -177,7 +191,7 @@ const BarraCliente = () => {
             <Link to="/servicios" className="text-gray-900 hover:text-yellow-800" onClick={() => setShowMobileMenu(false)}>
               <FontAwesomeIcon icon={faConciergeBell} className="mr-2" /> Servicios
             </Link>
-            <Link to="/perfil" className="text-gray-900 hover:text-yellow-800" onClick={() => setShowMobileMenu(false)}>
+            <Link to="/perfilusuario" className="text-gray-900 hover:text-yellow-800" onClick={() => setShowMobileMenu(false)}>
               <FontAwesomeIcon icon={faUser} className="mr-2" /> Perfil
             </Link>
             <button onClick={handleLogout} className="text-gray-900 hover:text-yellow-800">

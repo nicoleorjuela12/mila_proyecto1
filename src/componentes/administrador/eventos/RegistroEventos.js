@@ -16,6 +16,7 @@ function RegistroEventos() {
     fechaRegistro: new Date().toISOString(),
     estadoEvento: "abierto", // Nuevo campo para el estado del evento
     cantidadCupos: "", // Nuevo campo para la cantidad de cupos
+    inscritos: [],
     precioins: "",
   });
 
@@ -63,6 +64,11 @@ function RegistroEventos() {
       Swal.fire("Error", "Por favor completa todos los campos", "error");
       return;
     }
+// Validación de la fecha
+    const selectedDate = new Date(formData.fecha);
+    if (selectedDate.getDay() === 0) { // 0 es domingo
+      return Swal.fire('Error', 'No se pueden seleccionar eventos en domingo.', 'error');
+    }
 
     if (!isValidURL(formData.imagen)) {
       Swal.fire("Error", "El enlace de la imagen no es válido", "error");
@@ -79,7 +85,7 @@ function RegistroEventos() {
       return;
     }
 
-    if (isNaN(formData.cantidadCupos) || formData.cantidadCupos < 12 || formData.cantidadCupos >= 50) {
+    if (isNaN(formData.cantidadCupos) || formData.cantidadCupos < 12 || formData.cantidadCupos > 50) {
       Swal.fire("Error", "La cantidad de cupos debe ser mayor a 12 y menor a 50", "error");
       return;
     }
@@ -176,6 +182,7 @@ function RegistroEventos() {
                       type="text"
                       name="nombre"
                       id="nombre"
+                      onPaste={(e) => e.preventDefault()} // Deshabilitar pegado
                       value={formData.nombre}
                       onChange={handleChange}
                       className="w-full pl-10 pr-3 py-2 rounded-lg border-2 border-yellow-400 outline-none focus:border-yellow-600"
@@ -195,7 +202,10 @@ function RegistroEventos() {
                       name="fecha"
                       id="fecha"
                       value={formData.fecha}
+                      onPaste={(e) => e.preventDefault()} // Deshabilitar pegado
                       onChange={handleChange}
+                      min={new Date().toISOString().split('T')[0]} // Fecha de hoy
+                      max={new Date(new Date().getFullYear(), 11, 31).toISOString().split('T')[0]} // Último día del año
                       className="w-full pl-10 pr-3 py-2 rounded-lg border-2 border-yellow-400 outline-none focus:border-yellow-600"
                     />
                   </div>
@@ -330,8 +340,9 @@ function RegistroEventos() {
           </div>
         </div>
       </div>
-      <Footer />
+    <div></div>
     </div>
+    
   );
 }
 

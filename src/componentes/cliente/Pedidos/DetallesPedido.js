@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faCreditCard, faClipboardList, faUser, faComment, faCalendar, faTruck } from '@fortawesome/free-solid-svg-icons';
 
 const DetallesPedido = () => {
   const { state } = useLocation();
+  const navigate = useNavigate();
   const { carrito, usuario } = state || { carrito: [], usuario: {} };
 
   const [formData, setFormData] = useState({
@@ -25,17 +27,17 @@ const DetallesPedido = () => {
 
   useEffect(() => {
     const totalCarrito = carrito.reduce((total, producto) => total + producto.precio * producto.cantidad, 0);
-    setFormData((prev) => ({ ...prev, total: (totalCarrito * 10).toFixed(2) }));
+    setFormData((prev) => ({ ...prev, total: totalCarrito.toFixed(3) }));
   }, [carrito]);
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
+    // Validación de aceptación de términos
     if (!acceptedTerms) {
       Swal.fire({
         title: 'Error',
@@ -43,9 +45,10 @@ const DetallesPedido = () => {
         icon: 'error',
         confirmButtonText: 'OK',
       });
-      return;
+      return; // Detiene la ejecución si no se han aceptado los términos
     }
-
+  
+    // Validación de la hora
     if (!formData.hora || formData.hora < '11:00' || formData.hora > '18:00') {
       Swal.fire({
         title: 'Error',
@@ -53,9 +56,32 @@ const DetallesPedido = () => {
         icon: 'error',
         confirmButtonText: 'OK',
       });
-      return;
+      return; // Detiene la ejecución si la hora es inválida
     }
-
+  
+    // Validación del método de pago
+    if (!formData.metodoPago) {
+      Swal.fire({
+        title: 'Error',
+        text: 'Debes seleccionar un método de pago.',
+        icon: 'error',
+        confirmButtonText: 'OK',
+      });
+      return; // Detiene la ejecución si no se ha seleccionado un método de pago
+    }
+  
+    // Validación del tipo de entrega
+    if (!formData.tipoEntrega) {
+      Swal.fire({
+        title: 'Error',
+        text: 'Debes seleccionar un tipo de entrega.',
+        icon: 'error',
+        confirmButtonText: 'OK',
+      });
+      return; // Detiene la ejecución si no se ha seleccionado un tipo de entrega
+    }
+  
+    // Si todas las validaciones pasan, se envía el pedido
     try {
       const response = await fetch('http://localhost:3000/pedidos', {
         method: 'POST',
@@ -83,7 +109,7 @@ const DetallesPedido = () => {
           carrito,
         }),
       });
-
+  
       if (response.ok) {
         Swal.fire({
           title: 'Éxito',
@@ -91,7 +117,8 @@ const DetallesPedido = () => {
           icon: 'success',
           confirmButtonText: 'OK',
         });
-
+  
+        // Reiniciar formulario
         setFormData({
           fecha: new Date().toISOString().split('T')[0],
           hora: '',
@@ -103,6 +130,8 @@ const DetallesPedido = () => {
           estado: 'activo',
           pedidoId: Math.floor(Math.random() * 1000000),
         });
+        setAcceptedTerms(false); // Reseteamos el checkbox
+        setModalVisible(false); // Cerramos el modal
       } else {
         throw new Error('Error al enviar el pedido');
       }
@@ -227,46 +256,45 @@ const DetallesPedido = () => {
             />
           </div>
 
-          {/* Botón Enviar Pedido */}
+          {/* Checkbox de aceptación de políticas */}
+          <div className="col-span-2 flex items-center mt-4">
+            <input
+              type="checkbox"
+              id="aceptarPoliticas"
+              checked={acceptedTerms}
+              onChange={() => setAcceptedTerms(!acceptedTerms)}
+              className="mr-2"
+            />
+            <label htmlFor="aceptarPoliticas" className="text-sm text-gray-600 cursor-pointer" onClick={toggleModal}>
+              Acepto las políticas de privacidad
+            </label>
+          </div>
+
+          {/* Botón de Enviar */}
           <div className="col-span-2">
             <button
               type="button"
-              onClick={toggleModal}
-              className="mt-4 w-full bg-yellow-500 text-white font-semibold py-2 rounded-md hover:bg-yellow-600"
+              onClick={handleSubmit}
+              className={`w-full p-2 mt-4 text-white font-semibold bg-yellow-500 rounded-md ${!acceptedTerms ? 'opacity-50 cursor-not-allowed' : ''}`}
+              disabled={!acceptedTerms}
             >
               Enviar Pedido
             </button>
           </div>
         </form>
 
-        {/* Modal de Términos y Condiciones */}
+        {/* Modal de políticas de privacidad */}
         {modalVisible && (
-          <div className="fixed inset-0 flex items-center justify-center z-50">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h5 className="text-lg font-semibold">Términos y Condiciones</h5>
-              <p>Por favor, revisa y acepta nuestros términos y condiciones.</p>
-              <label className="flex items-center mt-4">
-                <input
-                  type="checkbox"
-                  className="form-checkbox text-yellow-500"
-                  checked={acceptedTerms}
-                  onChange={() => setAcceptedTerms(!acceptedTerms)}
-                />
-                <span className="ml-2">He leído y acepto las políticas de privacidad</span>
-              </label>
-              <div className="flex justify-end mt-4">
-                <button
-                  className="bg-gray-300 text-gray-700 py-2 px-4 rounded-md mr-2"
-                  onClick={toggleModal}
-                >
-                  Cancelar
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+            <div className="bg-white p-4 rounded shadow-md">
+              <h2 className="text-lg font-semibold mb-2">Políticas de Privacidad</h2>
+              <p className="mb-4">Aquí van las políticas de privacidad...</p>
+              <div className="flex justify-end">
+                <button onClick={acceptTerms} className="text-blue-500 mr-2">
+                  Aceptar
                 </button>
-                <button
-                  className="bg-yellow-500 text-white py-2 px-4 rounded-md"
-                  onClick={acceptTerms}
-                  disabled={!acceptedTerms}
-                >
-                  Confirmar
+                <button onClick={toggleModal} className="text-red-500">
+                  Cancelar
                 </button>
               </div>
             </div>

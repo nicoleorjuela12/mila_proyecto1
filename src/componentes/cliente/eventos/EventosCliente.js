@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 import '../../barras/BarraCliente';
 import BarraCliente from '../../barras/BarraCliente';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 const RegistroEventosCliente = () => {
   const [eventos, setEventos] = useState([]);
@@ -58,6 +60,54 @@ const RegistroEventosCliente = () => {
     return acumulador;
   }, {});
 
+  const handleInscripcion = async (evento) => {
+    try {
+      if (evento.cantidadCupos > 0) {
+        const nuevaCantidadCupos = evento.cantidadCupos - 1;
+  
+        // Hacer una solicitud para actualizar los cupos en la API
+        const response = await axios.put(`http://localhost:3000/eventos/${evento.id}`, {
+          ...evento,
+          cantidadCupos: nuevaCantidadCupos,
+        });
+  
+        if (response.status === 200) {
+          Swal.fire({
+            title: 'Inscripción exitosa',
+            text: 'Has ocupado un cupo del evento.',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
+  
+          // Actualizar el estado local para reflejar el nuevo número de cupos
+          setEventos(prevEventos =>
+            prevEventos.map(ev =>
+              ev.id === evento.id ? { ...ev, cantidadCupos: nuevaCantidadCupos } : ev
+            )
+          );
+        }
+      } else {
+        Swal.fire({
+          title: 'Lo sentimos',
+          text: 'No hay cupos disponibles para este evento.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      }
+    } catch (error) {
+      console.error('Error al inscribirse:', error);
+      Swal.fire({
+        title: 'Error',
+        text: 'No se pudo procesar tu inscripción.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    }
+  };
+
+
+
+
   const ordenCategorias = [
     'charlas',
     'teatro',
@@ -67,31 +117,21 @@ const RegistroEventosCliente = () => {
   ];
 
   const TarjetaEvento = ({ evento }) => {
-    const [cantidad, setCantidad] = useState(1);
+    
 
-    const aumentarCantidad = () => {
-      if (cantidad < 10) {
-        setCantidad(cantidad + 1);
-      }
-    };
 
-    const disminuirCantidad = () => {
-      if (cantidad > 1) {
-        setCantidad(cantidad - 1);
-      }
-    };
 
     return (
       <div className="rounded overflow-hidden shadow-lg flex flex-col transform hover:scale-105 transition duration-300 ease-in-out mt-12"> 
         <div className="relative">
           <img className="w-full" src={evento.imagen} alt={evento.nombre} />
           <div className="absolute inset-0 bg-gray-900 opacity-25 hover:bg-transparent transition duration-300"></div>
-          <Link to="#" className="text-xs absolute top-0 right-0 bg-yellow-500 px-4 py-2 text-black mt-3 mr-3 hover:bg-white hover:text-yellow-500 transition duration-500 ease-in-out">
+          <Link className="text-xs absolute top-0 right-0 bg-yellow-500 px-4 py-2 text-black mt-3 mr-3 no-underline transition duration-500 ease-in-out">
             {evento.categoria}
           </Link>
         </div>
         <div className="px-6 py-4 flex-1">
-          <Link to="#" className="font-medium text-lg inline-block hover:text-yellow-500 transition duration-500 ease-in-out mb-2">{evento.nombre}</Link>
+          <p className="font-medium text-lg inline-block transition duration-500 ease-in-out mb-2">{evento.nombre}</p>
           <p className="text-gray-500 text-sm mb-2">
             {evento.descripcion}
           </p>
@@ -101,17 +141,36 @@ const RegistroEventosCliente = () => {
           <p className="text-gray-500 text-sm mt-2 hidden">ID: {evento.id}</p> 
         </div>
         <div className="px-6 py-3 flex items-center justify-between bg-gray-100">
-          <button
-            className="flex items-center bg-yellow-500 hover:bg-yellow-300 text-black px-4 py-2 rounded transition duration-500 ease-in-out">
-              <Link
-                to="/FormularioInscripcion" // La ruta hacia el formulario
-                className="flex items-center bg-yellow-500 hover:bg-yellow-300 text-black px-4 py-2 rounded transition duration-500 ease-in-out"
-              >
-                <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                </svg>
-                Inscribirse
-              </Link>
-          </button>
+        <button className="flex items-center bg-yellow-500 hover:bg-yellow-300 text-black px-4 py-2 rounded transition duration-500 ease-in-out"
+          onClick={() => {
+            localStorage.setItem('id', evento.id); 
+            // Guardar el id del evento
+
+            const nuevosCupos = parseInt(evento.cantidadCupos) - 1;
+
+            if (nuevosCupos >= 0) {
+              axios
+                .patch(`http://localhost:3000/eventos/${evento.id}`, { cantidadCupos: nuevosCupos.toString() })
+                .then(() => {
+                  console.log('Cupo actualizado correctamente.');
+                  // Redirigir al formulario de inscripción después de actualizar los cupos
+                })
+                .catch(error => {
+                  console.error('Error al actualizar los cupos:', error);
+                });
+            } else {
+              alert('No hay cupos disponibles.');
+            }
+          }}
+        >
+          <Link
+            to="/FormularioInscripcion"
+            className="flex items-center no-underline rounded text-black transition duration-500 ease-in-out"
+          >
+            <FontAwesomeIcon icon={faUserPlus} className="h-5 w-5 mr-2 text-black" />
+            Inscribirse
+          </Link>
+        </button>
         </div>
       </div>
     );
@@ -166,7 +225,7 @@ const RegistroEventosCliente = () => {
           <option value="proximo">Próximo</option>
         </select>
         <button 
-          onClick={() => setOrdenamiento(ordenamiento === 'asc' ? 'desc' : 'asc')}
+          onClick={() => setOrdenamiento(ordenamiento === 'asc' ? 'desc' : 'asc') }
           className="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-300 transition duration-500 ease-in-out"
         >
           Ordenar por fecha: {ordenamiento === 'asc' ? 'Más Cercano a Más Lejano' : 'Más Lejano a Más Cercano'}

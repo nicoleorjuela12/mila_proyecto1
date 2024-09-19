@@ -16,9 +16,9 @@ const Pedidos = ({ userId }) => {
                     .filter(pedido => pedido.estado === 'activo')
                     .filter(pedido => {
                         const hora = new Date(`1970-01-01T${pedido.hora}`).getHours();
-                        return hora >= 11 && hora <= 18; // Filtra entre 11 AM y 6 PM
+                        return hora >= 11 && hora <= 18;
                     })
-                    .sort((a, b) => new Date(`${a.fecha}T${a.hora}`) - new Date(`${b.fecha}T${b.hora}`)); // Ordenar por fecha y hora
+                    .sort((a, b) => new Date(`${a.fecha}T${a.hora}`) - new Date(`${b.fecha}T${b.hora}`));
 
                 setPedidos(pedidosFiltrados);
             } catch (error) {
@@ -84,54 +84,48 @@ const Pedidos = ({ userId }) => {
                                 Ver Más
                             </button>
                         </div>
-
-
                     </div>
                 ))}
             </div>
 
             {open && selectedPedido && (
-             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-                <div className="bg-white rounded-lg shadow-xl w-4/5 md:w-3/4 lg:w-2/3 h-auto p-4 overflow-y-auto"> {/* Reduje el padding */}
-                    <div className="text-center mb-3"> {/* Reduje el margen inferior */}
-                        <h2 className="text-2xl font-bold text-gray-800">Detalles del Usuario y de los productos</h2>
-                    </div>
-            
-                    <div className="flex flex-col space-y-4"> {/* Reduje el espacio entre elementos */}
-                        <div className="p-3 bg-gray-100 rounded-lg"> {/* Reduje el padding interno */}
-                            <h3 className="text-lg font-semibold text-gray-700 border-b pb-2">Información del Usuario</h3>
-                            <p><strong>Nombre:</strong> {selectedPedido.usuario.nombre} {selectedPedido.usuario.apellido}</p>
-                            <p><strong>Número de Documento:</strong> {selectedPedido.usuario.numero_documento}</p>
-                            <p><strong>Dirección:</strong> {selectedPedido.usuario.direccion}</p>
-                            <p><strong>Barrio:</strong> {selectedPedido.usuario.barrio}</p>
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                    <div className="bg-white rounded-lg shadow-xl w-4/5 md:w-3/4 lg:w-2/3 h-auto max-h-[80vh] p-4 overflow-y-auto">
+                        <div className="text-center mb-3">
+                            <h2 className="text-2xl font-bold text-gray-800">Detalles del Usuario y de los productos</h2>
                         </div>
-            
-                        <div className="p-3 bg-yellow-100 rounded-lg"> {/* Reduje el padding interno */}
-                            <h3 className="text-lg font-semibold text-gray-700 border-b pb-2">Detalles de los productos</h3>
-                            {selectedPedido.carrito.map(item => (
-                                <div key={item.id} className="mt-2"> {/* Reduje el margen superior */}
-                                    <h4 className="font-semibold">{item.nombre}</h4>
-                                    <p><strong>Precio:</strong> ${item.precio}</p>
-                                    <p><strong>Descripción:</strong> {item.descripcion}</p>
-                                    <p><strong>Cantidad:</strong> {item.cantidad}</p>
-                                </div>
-                            ))}
+
+                        <div className="flex flex-col space-y-4">
+                            <div className="p-3 bg-gray-100 rounded-lg">
+                                <h3 className="text-lg font-semibold text-gray-700 border-b pb-2">Información del Usuario</h3>
+                                <p><strong>Nombre:</strong> {selectedPedido.usuario.nombre} {selectedPedido.usuario.apellido}</p>
+                                <p><strong>Número de Documento:</strong> {selectedPedido.usuario.numero_documento}</p>
+                                <p><strong>Dirección:</strong> {selectedPedido.usuario.direccion}</p>
+                                <p><strong>Barrio:</strong> {selectedPedido.usuario.barrio}</p>
+                            </div>
+
+                            <div className="p-3 bg-yellow-100 rounded-lg">
+                                <h3 className="text-lg font-semibold text-gray-700 border-b pb-2">Detalles de los productos</h3>
+                                {selectedPedido.carrito.map(item => (
+                                    <div key={item.id} className="mt-2">
+                                        <h4 className="font-semibold">{item.nombre}</h4>
+                                        <p><strong>Precio:</strong> ${item.precio}</p>
+                                        <p><strong>Cantidad:</strong> {item.cantidad}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    </div>
-            
-                    <div className="mt-4 text-right"> {/* Reduje el margen superior */}
-                        <button 
-                            onClick={() => setOpen(false)} 
-                            className="bg-yellow-500 text-black-500 px-4 py-2 rounded-lg shadow-md hover:bg-yellow-600 transition duration-300"
-                        >
-                            Cerrar
-                        </button>
+
+                        <div className="mt-4 text-right">
+                            <button 
+                                onClick={() => setOpen(false)} 
+                                className="bg-yellow-500 text-black-500 px-4 py-2 rounded-lg shadow-md hover:bg-yellow-600 transition duration-300"
+                            >
+                                Cerrar
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-         
-         
-          
             )}
         </div>
     );
