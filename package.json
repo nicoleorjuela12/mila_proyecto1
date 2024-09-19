@@ -9,6 +9,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.5",
+    "bcryptjs": "^2.4.3",
     "json-server": "^1.0.0-beta.2",
     "react": "^18.3.1",
     "react_mila": "file:",

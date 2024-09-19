@@ -105,7 +105,7 @@ const Carrito = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     // Validar dirección
     const direccionValida = /^(Calle|Cll|Carrera|Cra|Avenida|Av|Transversal|Tv|Diagonal|Dg|Autopista|Aut|Circular|Cr)\s/i.test(formData.direccion);
     if (!direccionValida) {
@@ -117,8 +117,7 @@ const Carrito = () => {
       });
       return; // Detener si no es válida
     }
-
-
+  
     // Validar barrio (solo letras)
     const barrioValido = /^[A-Za-z\s]+$/.test(formData.barrio);
     if (!barrioValido) {
@@ -130,7 +129,7 @@ const Carrito = () => {
       });
       return; // Detener si no es válido
     }
-
+  
     // Si las validaciones son correctas, proceder
     navigate('/detalles-pedido', {
       state: {
@@ -140,6 +139,10 @@ const Carrito = () => {
         total: calcularSubtotal(),
       }
     });
+  
+    // Limpiar el carrito y el total en localStorage
+    setCarrito([]);
+    localStorage.removeItem('carrito');
   };
 
 
@@ -168,7 +171,7 @@ const Carrito = () => {
           >
             <div className="w-full md:w-1/3 bg-white grid place-items-center">
               <img
-                src={producto.imagen || "https://via.placeholder.com/300x200"}
+                src={producto.imagen }
                 alt={producto.nombre}
                 className="rounded-xl"
               />

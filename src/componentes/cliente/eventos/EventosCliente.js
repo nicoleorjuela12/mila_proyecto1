@@ -14,8 +14,13 @@ const RegistroEventosCliente = () => {
   const [ordenamiento, setOrdenamiento] = useState('asc'); // Estado para el orden (ascendente o descendente)
   const [estadoFiltro, setEstadoFiltro] = useState(''); // Filtro para el estado del evento
   const [eventosNoEncontrados, setEventosNoEncontrados] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Estado para manejar autenticación
 
   useEffect(() => {
+    // Verifica si el usuario está autenticado (puedes modificar esto según tu lógica)
+    const user = localStorage.getItem('user');
+    setIsAuthenticated(!!user);
+    
     axios.get('http://localhost:3000/eventos') 
       .then(respuesta => {
         setEventos(respuesta.data);
@@ -123,6 +128,7 @@ const RegistroEventosCliente = () => {
 
     return (
       <div className="rounded overflow-hidden shadow-lg flex flex-col transform hover:scale-105 transition duration-300 ease-in-out mt-12"> 
+        {isAuthenticated ? <BarraCliente /> : <BarraNormal />}
         <div className="relative">
           <img className="w-full" src={evento.imagen} alt={evento.nombre} />
           <div className="absolute inset-0 bg-gray-900 opacity-25 hover:bg-transparent transition duration-300"></div>

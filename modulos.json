@@ -127,6 +127,36 @@
       "barrio": "santa rita",
       "email": "lydabrigittep@hotmail.com",
       "id": "2e8d"
+    },
+    {
+      "id": "8028",
+      "nombre": "Julian",
+      "apellido": "Orjuela",
+      "telefono": "3148812180",
+      "numero_documento": "8226665222",
+      "tipo_documento": "Cedula de ciudadania",
+      "direccion": "cll 133 # 156 a 20",
+      "barrio": "santa cecilia",
+      "email": "lydabrigi5566ttep@hotmail.com",
+      "contrasena": "Hola1234#",
+      "rol": "Cliente",
+      "estado": "Activo",
+      "aceptaTerminos": true
+    },
+    {
+      "id": "7590",
+      "nombre": "Julian",
+      "apellido": "orjulea",
+      "telefono": "3148812180",
+      "numero_documento": "777778787",
+      "tipo_documento": "Cedula de ciudadania",
+      "direccion": "cll 133 # 156 a 20",
+      "barrio": "santa rita",
+      "email": "nicoleorjuela551552@gmail.com",
+      "contrasena": "$2a$10$CZUn0Rf1lKB4zzzPmAKTaeyva0//aTnK.2au3aDfMdXGlsQCA9AIO",
+      "rol": "Cliente",
+      "estado": "Activo",
+      "aceptaTerminos": true
     }
   ],
   "reservas": [
@@ -180,72 +210,6 @@
     }
   ],
   "pedidos": [
-    {
-      "id": "0184",
-      "idpedido": 45693,
-      "fecha": "2024-09-19",
-      "hora": "15:13",
-      "metodoPago": "credito",
-      "total": "45.000",
-      "tipoEntrega": "recogida",
-      "cantidad": 3,
-      "detallesPedido": "xcl<lc,<sd",
-      "estado": "activo",
-      "usuario": {
-        "nombre": "Nicole",
-        "apellido": "Orjuela",
-        "numero_documento": "1019087044",
-        "direccion": "cll 133 # 156 a 20",
-        "barrio": "santa cecilia",
-        "idusuario": "5bae"
-      },
-      "carrito": [
-        {
-          "id": "1715",
-          "nombre": "camarones ",
-          "precio": "15.000",
-          "descripcion": "camarones en coctel de salsa de piña",
-          "imagen": "https://comedera.com/wp-content/uploads/sites/9/2023/02/camarones-al-mojo-de-ajo-shutterstock_2120733179.jpg",
-          "categoria": "entradas",
-          "estado": "activo",
-          "fechaRegistro": "2024-09-09T23:02:16.919Z",
-          "cantidad": 3
-        }
-      ]
-    },
-    {
-      "id": "87ae",
-      "idpedido": 296519,
-      "fecha": "2024-09-19",
-      "hora": "16:01",
-      "metodoPago": "credito",
-      "total": "450.00",
-      "tipoEntrega": "recogida",
-      "cantidad": 3,
-      "detallesPedido": ",m,mñldkd",
-      "estado": "activo",
-      "usuario": {
-        "nombre": "Nicole",
-        "apellido": "Orjuela",
-        "numero_documento": "1019087044",
-        "direccion": "cll 133 # 156 a 20",
-        "barrio": "santa cecilia",
-        "idusuario": "5bae"
-      },
-      "carrito": [
-        {
-          "id": "1715",
-          "nombre": "camarones ",
-          "precio": "15.000",
-          "descripcion": "camarones en coctel de salsa de piña",
-          "imagen": "https://comedera.com/wp-content/uploads/sites/9/2023/02/camarones-al-mojo-de-ajo-shutterstock_2120733179.jpg",
-          "categoria": "entradas",
-          "estado": "activo",
-          "fechaRegistro": "2024-09-09T23:02:16.919Z",
-          "cantidad": 3
-        }
-      ]
-    },
     {
       "id": "2565",
       "idpedido": 645575,
@@ -375,6 +339,138 @@
           "estado": "activo",
           "fechaRegistro": "2024-09-09T23:02:16.919Z",
           "cantidad": 2
+        }
+      ]
+    },
+    {
+      "id": "a876",
+      "idpedido": 585035,
+      "fecha": "2024-09-19",
+      "hora": "16:22",
+      "metodoPago": "credito",
+      "total": "195.000",
+      "tipoEntrega": "recogida",
+      "cantidad": 8,
+      "detallesPedido": "m,lñ,ñllñ",
+      "estado": "activo",
+      "usuario": {
+        "nombre": "nicole ",
+        "apellido": "sfkgfg",
+        "numero_documento": "58756656589",
+        "direccion": "cll 133 # 156 a 20",
+        "barrio": "santa rita",
+        "idusuario": "e509"
+      },
+      "carrito": [
+        {
+          "id": "6495",
+          "nombre": "ceviche tilapia",
+          "precio": "30.000",
+          "descripcion": "Los ingredientes para un ceviche de tilapia son tilapia fresca, jugo de limón, cebolla morada, tomate, cilantro, chile o ají (opcional), ajo, sal, pimienta, aceite de oliva, aguacate (opcional), lechuga para decorar y tostadas o chips para acompañar",
+          "imagen": "https://mojo.generalmills.com/api/public/content/CsSALdeyO0aFKpBrTh32Pg_gmi_hi_res_jpeg.jpeg?v=c68d0c4f&t=16e3ce250f244648bef28c5949fb99ff",
+          "categoria": "entradas",
+          "estado": "activo",
+          "fechaRegistro": "2024-09-12T03:50:20.571Z",
+          "cantidad": 5
+        },
+        {
+          "id": "1715",
+          "nombre": "camarones ",
+          "precio": "15.000",
+          "descripcion": "camarones en coctel de salsa de piña",
+          "imagen": "https://comedera.com/wp-content/uploads/sites/9/2023/02/camarones-al-mojo-de-ajo-shutterstock_2120733179.jpg",
+          "categoria": "entradas",
+          "estado": "activo",
+          "fechaRegistro": "2024-09-09T23:02:16.919Z",
+          "cantidad": 3
+        }
+      ]
+    },
+    {
+      "id": "d886",
+      "idpedido": 198783,
+      "fecha": "2024-09-19",
+      "hora": "11:08",
+      "metodoPago": "credito",
+      "total": "233.000",
+      "tipoEntrega": "recogida",
+      "cantidad": 9,
+      "detallesPedido": "klkllñll",
+      "estado": "activo",
+      "usuario": {
+        "nombre": "nicole ",
+        "apellido": "sfkgfg",
+        "numero_documento": "58756656589",
+        "direccion": "cll 133 # 156 a 20",
+        "barrio": "santa bilbao",
+        "idusuario": "e509"
+      },
+      "carrito": [
+        {
+          "id": "6495",
+          "nombre": "ceviche tilapia",
+          "precio": "30.000",
+          "descripcion": "Los ingredientes para un ceviche de tilapia son tilapia fresca, jugo de limón, cebolla morada, tomate, cilantro, chile o ají (opcional), ajo, sal, pimienta, aceite de oliva, aguacate (opcional), lechuga para decorar y tostadas o chips para acompañar",
+          "imagen": "https://mojo.generalmills.com/api/public/content/CsSALdeyO0aFKpBrTh32Pg_gmi_hi_res_jpeg.jpeg?v=c68d0c4f&t=16e3ce250f244648bef28c5949fb99ff",
+          "categoria": "entradas",
+          "estado": "activo",
+          "fechaRegistro": "2024-09-12T03:50:20.571Z",
+          "cantidad": 5
+        },
+        {
+          "id": "1715",
+          "nombre": "camarones ",
+          "precio": "15.000",
+          "descripcion": "camarones en coctel de salsa de piña",
+          "imagen": "https://comedera.com/wp-content/uploads/sites/9/2023/02/camarones-al-mojo-de-ajo-shutterstock_2120733179.jpg",
+          "categoria": "entradas",
+          "estado": "activo",
+          "fechaRegistro": "2024-09-09T23:02:16.919Z",
+          "cantidad": 3
+        },
+        {
+          "id": "5fdb",
+          "nombre": "Langostinos crocantes",
+          "precio": "38.000",
+          "descripcion": "Exquisitos langostinos empanizados en una capa crujiente, acompañados de una deliciosa salsa de ajo y limón. ",
+          "imagen": "https://www.hogarmania.com/archivos/202012/karl66740320-langostinos-crujientes-con-mahonesa-receta-joseba-arguinano-1280x720x80xX.jpg",
+          "categoria": "entradas",
+          "estado": "activo",
+          "fechaRegistro": "2024-09-12T03:46:51.140Z",
+          "cantidad": 1
+        }
+      ]
+    },
+    {
+      "id": "2d47",
+      "idpedido": 778154,
+      "fecha": "2024-09-19",
+      "hora": "12:09",
+      "metodoPago": "credito",
+      "total": "15.000",
+      "tipoEntrega": "recogida",
+      "cantidad": 1,
+      "detallesPedido": "dkldskds",
+      "estado": "activo",
+      "usuario": {
+        "nombre": "nicole ",
+        "apellido": "sfkgfg",
+        "numero_documento": "58756656589",
+        "direccion": "cll 133 # 156 a 20",
+        "barrio": "santa bilbao",
+        "idusuario": "e509"
+      },
+      "carrito": [
+        {
+          "id": "1715",
+          "nombre": "camarones ",
+          "precio": "15.000",
+          "descripcion": "camarones en coctel de salsa de piña",
+          "imagen": "https://comedera.com/wp-content/uploads/sites/9/2023/02/camarones-al-mojo-de-ajo-shutterstock_2120733179.jpg",
+          "categoria": "entradas",
+          "estado": "activo",
+          "fechaRegistro": "2024-09-09T23:02:16.919Z",
+          "cantidad": 1
         }
       ]
     }

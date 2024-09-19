@@ -58,6 +58,10 @@ const App = () => {
           <Route path="/registrocliente" element={<FormularioRegistro />} />
           <Route path="/servicios" element={<Servicios />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/productos" element={<ProductosCliente />} />
+          <Route path="/EventosCliente"  element={<RegistroEventosCliente />} />
+         
+
 
           {/* Rutas protegidas */}
           <Route path="/consultausarios" element={
@@ -95,11 +99,7 @@ const App = () => {
               <ReservaLocal />
             </ProtectedRoute>
           } />
-          <Route path="/productos" element={
-            <ProtectedRoute>
-              <ProductosCliente />
-            </ProtectedRoute>
-          } />
+          
           <Route path="/Carrito" element={
             <ProtectedRoute>
               <Carrito />
@@ -120,11 +120,7 @@ const App = () => {
               <GestionReservasCliente />
             </ProtectedRoute>
           } />
-          <Route path="/EventosCliente" element={
-            <ProtectedRoute>
-              <RegistroEventosCliente />
-            </ProtectedRoute>
-          } />
+          
           <Route path="/RegistroEventos" element={
             <ProtectedRoute>
               <RegistroEventos />

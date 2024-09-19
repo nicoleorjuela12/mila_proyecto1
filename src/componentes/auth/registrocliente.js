@@ -3,6 +3,7 @@ import axios from 'axios';
 import { UserContext } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import bcrypt from 'bcryptjs';
 
 
 const FormularioRegistro = () => {
@@ -152,8 +153,12 @@ const FormularioRegistro = () => {
           aceptaTerminos: false,
         });
       } else {
+          // Encripta la contraseña antes de enviarla
+        const contrasenaEncriptada = await bcrypt.hash(formData.contrasena, 10);
+        
         // Establece el rol como 'Cliente'
-        const formDataWithRole = { ...formData, rol: 'Cliente' };
+        const formDataWithRole = { ...formData, rol: 'Cliente', contrasena: contrasenaEncriptada };
+
 
         const registerResponse = await axios.post('http://localhost:3000/usuarios', formDataWithRole);
 
@@ -218,7 +223,7 @@ const FormularioRegistro = () => {
               <li><i className="fa-solid fa-check" style={{ color: '#FFD43B', marginRight: '3%' }} /> Invitaciones a Eventos Especiales</li>
               <li><i className="fa-solid fa-check" style={{ color: '#FFD43B', marginRight: '3%' }} /> Notificaciones y Recordatorios</li>
               <li><i className="fa-solid fa-check" style={{ color: '#FFD43B', marginRight: '3%' }} /> Podrás realizar tus reservas y cotizaciones</li>
-              <li><i className="fa-solid fa-check" style={{ color: '#FFD43B', marginRight: '3%' }} /> Obtendrás descuentos al realizar tu pedido </li>
+              <li><i className="fa-solid fa-check" style={{ color: '#FFD43B', marginRight: '3%' }} /> Realizaras mas rapido tus pedidos </li>
             </ul>
           </div>
         </div>
