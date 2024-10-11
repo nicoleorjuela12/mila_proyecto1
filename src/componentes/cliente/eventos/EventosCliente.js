@@ -139,6 +139,7 @@ const RegistroEventosCliente = () => {
       
       <div className="rounded overflow-hidden shadow-lg flex flex-col transform hover:scale-105 transition duration-300 ease-in-out mt-12"> 
         
+        
         <div className="relative">
           <img className="w-full" src={evento.imagen} alt={evento.nombre} />
           <div className="absolute inset-0 bg-gray-900 opacity-25 hover:bg-transparent transition duration-300"></div>
@@ -194,7 +195,7 @@ const RegistroEventosCliente = () => {
 
   return (
     <div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
-      <BarraCliente/>
+     
       <div className="border-b mb-5 flex justify-between text-sm">
         <div className="text-black flex items-center pb-2 pr-2 border-b-2 border-black uppercase">
           <span className="font-semibold inline-block">Seleccione una Categoría</span>

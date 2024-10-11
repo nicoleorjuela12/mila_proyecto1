@@ -10,7 +10,7 @@ const ProtectedRoute = ({ children }) => {
 
   // Si el usuario no tiene un rol válido o no está autenticado, redirige al login
   if (!role || !validRoles.includes(role)) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
 
   // Si el usuario está autenticado con un rol válido, renderiza el contenido

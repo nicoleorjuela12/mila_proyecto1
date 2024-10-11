@@ -254,6 +254,7 @@ const FormularioRegistro = () => {
                     title="Solo letras, entre 4 y 15 caracteres"
                     className="pl-10 pr-2 border-2 border-yellow-300 py-1 rounded-lg text-sm outline-none focus:border-yellow-600 w-full"
                     required
+                    autoFocus
                   />
                 </div>
               </div>

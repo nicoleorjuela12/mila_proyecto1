@@ -22,7 +22,7 @@ export const UserProvider = ({ children }) => {
     setRole(userRole);
 
     // Redirige al usuario a su página de perfil o página principal
-    navigate('/perfil'); // Asegúrate de que la ruta '/perfil' esté configurada
+    navigate('/login'); // Asegúrate de que la ruta '/perfil' esté configurada
   };
 
   const logout = () => {
@@ -31,7 +31,7 @@ export const UserProvider = ({ children }) => {
     setRole('normal');
     
     // Redirige a la página de login usando navigate
-    navigate('/login');
+    navigate('/');
     
     // Aquí puedes agregar lógica adicional para el cierre de sesión, si es necesario
   };

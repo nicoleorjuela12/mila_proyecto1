@@ -1,4 +1,4 @@
-import React, { useContext,useEffect, } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { UserProvider, UserContext } from './context/UserContext';
 import { useNavigate } from 'react-router-dom';
@@ -38,17 +38,17 @@ const App = () => {
   const { role, setRole } = useContext(UserContext);
   const navigate = useNavigate();
 
-
-
   useEffect(() => {
     const storedRole = localStorage.getItem('role');
-    if (storedRole) {
+    const publicPaths = ['/', '/login', '/RegistroCliente','/servicios', '/productos', '/EventosCliente'];
+  
+    if (!storedRole && !publicPaths.includes(window.location.pathname)) {
+      navigate('/login'); // Redirige a la página de inicio de sesión si no hay rol y la ruta no es pública
+    } else if (storedRole) {
       setRole(storedRole);
-    } else {
-      navigate('/login'); // Redirige a la página de inicio de sesión si no hay rol
     }
   }, [setRole, navigate]);
-
+  
   // Determina el componente de la barra de navegación según el rol
   let NavBarComponent = BarraNormal; // Valor por defecto
   if (role === 'administrador') {
@@ -67,13 +67,11 @@ const App = () => {
           {/* Rutas públicas */}
           <Route path='/' element={<Index />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/registrocliente" element={<FormularioRegistro />} />
+          <Route path="/RegistroCliente" element={<FormularioRegistro />} />
           <Route path="/servicios" element={<Servicios />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/productos" element={<ProductosCliente />} />
-          <Route path="/EventosCliente"  element={<RegistroEventosCliente />} />
-         
-
+          <Route path="/EventosCliente" element={<RegistroEventosCliente />} />
 
           {/* Rutas protegidas */}
           <Route path="/consultausarios" element={
@@ -111,7 +109,6 @@ const App = () => {
               <ReservaLocal />
             </ProtectedRoute>
           } />
-          
           <Route path="/Carrito" element={
             <ProtectedRoute>
               <Carrito />
@@ -122,23 +119,16 @@ const App = () => {
               <GestionReservaMesa />
             </ProtectedRoute>
           } />
-          <Route path="/GestionReservaLocal" element={
-            <ProtectedRoute>
-              <ReservaLocal />
-            </ProtectedRoute>
-          } />
           <Route path="/reservascliente" element={
             <ProtectedRoute>
               <GestionReservasCliente />
             </ProtectedRoute>
           } />
-          
           <Route path="/RegistroEventos" element={
             <ProtectedRoute>
               <RegistroEventos />
             </ProtectedRoute>
           } />
-        
           <Route path="/FormularioInscripcion" element={
             <ProtectedRoute>
               <FormularioInscripcion />
@@ -149,32 +139,29 @@ const App = () => {
               <PerfilUsuario />
             </ProtectedRoute>
           } />
-
           <Route path="/detalles-pedido" element={
             <ProtectedRoute>
               <DetallesPedido />
             </ProtectedRoute>
           } />
-
           <Route path="/pedidos" element={
             <ProtectedRoute>
               <Pedido />
             </ProtectedRoute>
           } />
-
           <Route path="/MisInscripciones" element={
             <ProtectedRoute>
-              <MisInscripciones/>
+              <MisInscripciones />
             </ProtectedRoute>
           } />
           <Route path="/EditarEventos/:id" element={
             <ProtectedRoute>
-              <EditarEventos/>
+              <EditarEventos />
             </ProtectedRoute>
           } />
           <Route path="/ModificarEventos" element={
             <ProtectedRoute>
-              <GestionEventos/>
+              <GestionEventos />
             </ProtectedRoute>
           } />
         </Routes>
