@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faUser, faIdCard, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const Carrito = () => {
   const [carrito, setCarrito] = useState([]);
@@ -17,6 +18,10 @@ const Carrito = () => {
     barrio: ''
   });
   const navigate = useNavigate();
+
+  const isButtonDisabled = () => {
+    return carrito.length === 0 || formData.direccion.trim() === '' || formData.barrio.trim() === '';
+  };
 
   useEffect(() => {
     const carritoGuardado = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -258,7 +263,7 @@ const Carrito = () => {
               type="text"
               id="nombre"
               name="nombre"
-              className="mt-1 p-2 w-full border border-yellow-500 rounded-md"
+              className="mt-1 p-2 w-full border border-yellow-500 rounded-md bg-gray-200 cursor-not-allowed"
               placeholder="Nombre"
               value={formData.nombre}
               readOnly
@@ -273,7 +278,7 @@ const Carrito = () => {
               type="text"
               id="apellido"
               name="apellido"
-              className="mt-1 p-2 w-full border border-yellow-500 rounded-md"
+              className="mt-1 p-2 w-full border border-yellow-500 rounded-md bg-gray-200 cursor-not-allowed"
               placeholder="Apellido"
               value={formData.apellido}
               readOnly
@@ -283,14 +288,14 @@ const Carrito = () => {
   
         <div className="grid grid-cols-2 gap-4 mt-4">
           <div>
-            <label htmlFor="numero_documento" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="numero_documento" className="block text-sm font-medium text-gray-700 ">
               <FontAwesomeIcon icon={faIdCard} className="text-yellow-500 mr-2" /> Número de Documento
             </label>
             <input
               type="text"
               id="numero_documento"
               name="numero_documento"
-              className="mt-1 p-2 w-full border border-yellow-500 rounded-md"
+              className="mt-1 p-2 w-full border border-yellow-500 rounded-md bg-gray-200 cursor-not-allowed"
               placeholder="Número de Documento"
               value={formData.numero_documento}
               readOnly
@@ -300,6 +305,7 @@ const Carrito = () => {
           <div>
             <label htmlFor="telefono" className="block text-sm font-medium text-gray-700">
               <FontAwesomeIcon icon={faUser} className="text-yellow-500 mr-2" /> Teléfono
+              <span className="text-red-500 text-lg ml-1">*</span> {/* Asterisco rojo */}
             </label>
             <input
               type="text"
@@ -307,8 +313,9 @@ const Carrito = () => {
               name="telefono"
               className="mt-1 p-2 w-full border border-yellow-500 rounded-md"
               placeholder="Teléfono"
+              onChange={handleChange}
               value={formData.telefono}
-              readOnly
+              required
             />
           </div>
         </div>
@@ -316,6 +323,8 @@ const Carrito = () => {
         <div className="mt-4">
           <label htmlFor="direccion" className="block text-sm font-medium text-gray-700">
             <FontAwesomeIcon icon={faMapMarkerAlt} className="text-yellow-500 mr-2" /> Dirección
+            <span className="text-red-500 text-lg ml-1">*</span> {/* Asterisco rojo */}
+
           </label>
           <input
             type="text"
@@ -332,6 +341,7 @@ const Carrito = () => {
         <div className="mt-4">
           <label htmlFor="barrio" className="block text-sm font-medium text-gray-700">
             <FontAwesomeIcon icon={faMapMarkerAlt} className="text-yellow-500 mr-2" /> Barrio
+            <span className="text-red-500 text-lg ml-1">*</span> {/* Asterisco rojo */}
           </label>
           <input
             type="text"
@@ -348,9 +358,13 @@ const Carrito = () => {
         <div className="mt-6">
           <button
             type="submit"
-            className="w-full py-2 px-4 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold rounded-lg"
+            className={`w-full py-2 px-4 ${isButtonDisabled() ? 'bg-yellow-200' : 'bg-yellow-500 hover:bg-yellow-600'} font-semibold rounded-lg`}
+            disabled={isButtonDisabled()} // Deshabilitar el botón si la función lo determina
           >
-            Continuar
+            <span className={`text-${isButtonDisabled() ? 'black' : 'black'} flex items-center justify-center`}>
+              <FontAwesomeIcon icon={faArrowRight} className="mr-2" /> {/* Ícono antes del texto */}
+              Continuar
+            </span>
           </button>
         </div>
       </form>

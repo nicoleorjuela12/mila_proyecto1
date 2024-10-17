@@ -13,9 +13,9 @@ const DetallesPedido = () => {
   const [formData, setFormData] = useState({
     fecha: new Date().toISOString().split('T')[0],
     hora: '',
-    metodoPago: 'credito',
+    metodoPago: '',
     total: '',
-    tipoEntrega: 'recogida',
+    tipoEntrega: '',
     cantidad: carrito.reduce((total, producto) => total + producto.cantidad, 0),
     detallesPedido: '',
     estado: 'activo',
@@ -31,10 +31,12 @@ const DetallesPedido = () => {
   }, [carrito]);
   
 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+  
 
   const handleSubmit = async () => {
     // Validación de aceptación de términos
@@ -124,9 +126,9 @@ const DetallesPedido = () => {
         setFormData({
           fecha: new Date().toISOString().split('T')[0],
           hora: '',
-          metodoPago: 'credito',
+          metodoPago: '',
           total: '',
-          tipoEntrega: 'recogida',
+          tipoEntrega: '',
           cantidad: 0,
           detallesPedido: '',
           estado: 'activo',
@@ -167,14 +169,16 @@ const DetallesPedido = () => {
           <div className="mb-4">
             <label htmlFor="fecha" className="block text-sm font-medium text-gray-700">
               <FontAwesomeIcon icon={faCalendar} className="text-yellow-500 mr-2" /> Fecha
+              <span className="text-red-500 text-lg ml-1">*</span> {/* Asterisco rojo */}
             </label>
-            <input type="date" id="fecha" name="fecha" value={formData.fecha} readOnly className="mt-1 p-2 w-full border border-yellow-500 rounded-md" required />
+            <input type="date" id="fecha" name="fecha" value={formData.fecha} readOnly className="mt-1 p-2 w-full border border-yellow-500 rounded-md bg-gray-200 cursor-not-allowed" required />
           </div>
 
           {/* Hora */}
           <div className="mb-4">
             <label htmlFor="hora" className="block text-sm font-medium text-gray-700">
               <FontAwesomeIcon icon={faClock} className="text-yellow-500 mr-2" /> Hora
+              <span className="text-red-500 text-lg ml-1">*</span> {/* Asterisco rojo */}
             </label>
             <input
               type="time"
@@ -191,6 +195,7 @@ const DetallesPedido = () => {
           <div>
             <label htmlFor="metodoPago" className="block text-sm font-medium text-gray-700">
               <FontAwesomeIcon icon={faCreditCard} className="text-yellow-500 mr-2" /> Método de Pago
+              <span className="text-red-500 text-lg ml-1">*</span> {/* Asterisco rojo */}
             </label>
             <select id="metodoPago" name="metodoPago" value={formData.metodoPago} onChange={handleChange} className="mt-1 p-2 w-full border border-yellow-500 rounded-md">
               <option value="credito">Tarjeta de Crédito</option>
@@ -200,7 +205,7 @@ const DetallesPedido = () => {
           </div>
 
           <div>
-            <label htmlFor="total" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="total" className="block text-sm font-medium text-gray-700 mt-1">
               <FontAwesomeIcon icon={faClipboardList} className="text-yellow-500 mr-2" /> Total
             </label>
             <input
@@ -209,7 +214,7 @@ const DetallesPedido = () => {
               name="total"
               value={formData.total}
               readOnly
-              className="mt-1 p-2 w-full border border-yellow-500 rounded-md"
+              className="mt-1 p-2 w-full border border-yellow-500 rounded-md bg-gray-200 cursor-not-allowed"
               placeholder="$0.00"
               required
             />
@@ -217,9 +222,10 @@ const DetallesPedido = () => {
 
           {/* Tipo de Entrega */}
           <div className="mt-4">
-            <label htmlFor="tipoEntrega" className="block text-sm font-medium text-gray-700">
-              <FontAwesomeIcon icon={faTruck} className="text-yellow-500 mr-2" /> Tipo de Entrega
-            </label>
+          <label htmlFor="tipoEntrega" className="block text-sm font-medium text-gray-700">
+            <FontAwesomeIcon icon={faTruck} className="text-yellow-500 mr-2" /> Tipo de Entrega
+            <span className="text-red-500 text-lg ml-1">*</span> {/* Asterisco rojo */}
+          </label>            
             <select id="tipoEntrega" name="tipoEntrega" value={formData.tipoEntrega} onChange={handleChange} className="mt-1 p-2 w-full border border-yellow-500 rounded-md">
               <option value="recogida">Recogida en Tienda</option>
               <option value="envio">Envío a Domicilio</option>
@@ -228,7 +234,7 @@ const DetallesPedido = () => {
 
           {/* Cantidad (no editable) */}
           <div className="mt-4">
-            <label htmlFor="cantidad" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="cantidad" className="block text-sm font-medium text-gray-700 mt-1">
               <FontAwesomeIcon icon={faUser} className="text-yellow-500 mr-2" /> Cantidad
             </label>
             <input
@@ -237,8 +243,7 @@ const DetallesPedido = () => {
               name="cantidad"
               value={formData.cantidad}
               readOnly
-              className="mt-1 p-2 w-full border border-yellow-500 rounded-md"
-              placeholder="0"
+              className="mt-1 p-2 w-full border border-yellow-500 rounded-md bg-gray-200 cursor-not-allowed"               placeholder="0"
               required
             />
           </div>
@@ -246,7 +251,7 @@ const DetallesPedido = () => {
           {/* Detalles del Pedido */}
           <div className="mt-4 col-span-2">
             <label htmlFor="detallesPedido" className="block text-sm font-medium text-gray-700">
-              <FontAwesomeIcon icon={faComment} className="text-yellow-500 mr-2" /> Detalles del Pedido
+              <FontAwesomeIcon icon={faComment} className="text-yellow-500 mr-2" /> Detalles del Pedido(opcional)
             </label>
             <textarea
               id="detallesPedido"

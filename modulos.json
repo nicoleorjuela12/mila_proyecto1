@@ -157,6 +157,10 @@
       "rol": "Cliente",
       "estado": "Activo",
       "aceptaTerminos": true
+    },
+    {
+      "estado": "inactivo",
+      "id": "ab49"
     }
   ],
   "reservas": [
@@ -175,6 +179,23 @@
       "estado_reserva": "Activa",
       "tipo_reserva": "reserva_mesa",
       "terminos": true
+    },
+    {
+      "id": "5f49",
+      "nombre": "Nicole",
+      "celular": "3114778362",
+      "correo": "Nicole1526@gmail.com",
+      "numero_documento": "1019087044",
+      "numeroPersonas": "15",
+      "fecha": "2024-10-18",
+      "horaInicio": "11:07",
+      "horaFin": "15:07",
+      "comentarios": "dos mesas infantiles",
+      "tipoServicios": "Decoracion",
+      "estado_reserva": "Activa",
+      "tipo_reserva": "reserva_local",
+      "terminos": true,
+      "userId": "5bae"
     }
   ],
   "productos": [
@@ -457,6 +478,16 @@
       "categoria": "cocteles",
       "estado": "activo",
       "fechaRegistro": "2024-09-19T10:41:07.028Z"
+    },
+    {
+      "id": "f191",
+      "nombre": "brownie",
+      "precio": "7.000",
+      "descripcion": "brownie de chocolate",
+      "imagen": "https://www.aceitesdeolivadeespana.com/wp-content/uploads/2019/03/brownies-de-chocolate-1000x768.png",
+      "categoria": "postres",
+      "estado": "inactivo",
+      "fechaRegistro": "2024-10-17T14:14:19.537Z"
     }
   ],
   "pedidos": [
@@ -635,6 +666,105 @@
           "cantidad": 1
         }
       ]
+    },
+    {
+      "id": "15ce",
+      "idpedido": 6338,
+      "fecha": "2024-10-17",
+      "hora": "13:30",
+      "metodoPago": "nequi",
+      "total": "34.000",
+      "tipoEntrega": "envio",
+      "cantidad": 2,
+      "detallesPedido": "",
+      "estado": "activo",
+      "usuario": {
+        "nombre": "Nicole",
+        "apellido": "Orjuela",
+        "numero_documento": "1019087044",
+        "direccion": "cll 133 # 156 a 20",
+        "barrio": "santa cecilia",
+        "idusuario": "5bae"
+      },
+      "carrito": [
+        {
+          "id": "2cff",
+          "nombre": "Empanadas",
+          "precio": "17.000",
+          "descripcion": "Pastelitos salados o dulces hechos con masa de harina y rellenos variados, horneados o fritos hasta dorados.\n\nIngredientes (varían según relleno):\nEmpanadas Saladas:\n- tazas de harina\n- cucharadita de sal\n- cucharadita de polvo de hornear\n- taza de manteca derretida",
+          "imagen": "https://th.bing.com/th/id/OIP.Rn6aiapvpR9oTv89rrgZLAHaFF?w=243&h=180&c=7&r=0&o=5&pid=1.7",
+          "categoria": "entradas",
+          "estado": "activo",
+          "fechaRegistro": "2024-09-19T10:12:05.545Z",
+          "cantidad": 2
+        }
+      ]
+    },
+    {
+      "id": "829a",
+      "idpedido": 540170,
+      "fecha": "2024-10-17",
+      "hora": "11:49",
+      "metodoPago": "nequi",
+      "total": "15.000",
+      "tipoEntrega": "envio",
+      "cantidad": 1,
+      "detallesPedido": "kkkk",
+      "estado": "activo",
+      "usuario": {
+        "nombre": "Nicole",
+        "apellido": "Orjuela",
+        "numero_documento": "1019087044",
+        "direccion": "cll 133 # 156 a 20",
+        "barrio": "santa cecilia",
+        "idusuario": "5bae"
+      },
+      "carrito": [
+        {
+          "id": "1715",
+          "nombre": "camarones ",
+          "precio": "15.000",
+          "descripcion": "camarones en coctel de salsa de piña",
+          "imagen": "https://comedera.com/wp-content/uploads/sites/9/2023/02/camarones-al-mojo-de-ajo-shutterstock_2120733179.jpg",
+          "categoria": "entradas",
+          "estado": "activo",
+          "fechaRegistro": "2024-09-09T23:02:16.919Z",
+          "cantidad": 1
+        }
+      ]
+    },
+    {
+      "id": "a20c",
+      "idpedido": 456953,
+      "fecha": "2024-10-17",
+      "hora": "11:11",
+      "metodoPago": "nequi",
+      "total": "18.000",
+      "tipoEntrega": "envio",
+      "cantidad": 1,
+      "detallesPedido": "l",
+      "estado": "activo",
+      "usuario": {
+        "nombre": "Nicole",
+        "apellido": "Orjuela",
+        "numero_documento": "1019087044",
+        "direccion": "cll 133 # 156 a 20",
+        "barrio": "santa cecilia",
+        "idusuario": "5bae"
+      },
+      "carrito": [
+        {
+          "id": "5895",
+          "nombre": "Arrancinis",
+          "precio": "18.000",
+          "descripcion": "Bolas de arroz rellenas de ingredientes sabrosos, empanadas y fritas hasta doradas.\nIngredientes:\n- tazas de arroz cocido\n- taza de relleno (ej.: queso mozzarella, carne mechada, verduras)\n- huevo\n- taza de pan rallado\n- cucharadita de sal\n- cucharadita de pimient",
+          "imagen": "https://th.bing.com/th/id/OIP.ZcnTQTCt3PWscoAdr5nYsAHaE8?w=305&h=204&c=7&r=0&o=5&pid=1.7",
+          "categoria": "entradas",
+          "estado": "activo",
+          "fechaRegistro": "2024-09-19T10:15:26.458Z",
+          "cantidad": 1
+        }
+      ]
     }
   ],
   "eventos": [
@@ -648,7 +778,7 @@
       "estado": "activo",
       "fechaRegistro": "2024-09-12T14:34:44.352Z",
       "estadoEvento": "proximo",
-      "cantidadCupos": "15",
+      "cantidadCupos": "14",
       "inscritos": []
     }
   ]

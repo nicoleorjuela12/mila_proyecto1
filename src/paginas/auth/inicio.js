@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { UserContext } from '../../context/UserContext'; // Importa el contexto de usuario
 import '../../index.css';
 
@@ -13,6 +13,11 @@ import BarraNormal from "../../componentes/barras/barra_normal";
 const Index = () => {
   const { role, setRole } = useContext(UserContext);
   const navigate = useNavigate();
+
+  const handleClick = () => {
+    window.open("https://wa.me/p/7007417162688189/573124875578", "_blank");
+  };
+
 
   // Efecto para manejar la redirección al iniciar sesión
   useEffect(() => {
@@ -153,7 +158,7 @@ const Index = () => {
           <div className="flex items-center">
             <div className="w-2/5">
               <img className="w-full mb-3 lg:mb-0 transition-transform duration-300 ease-in-out hover:scale-105 hover:border-2 hover:border-yellow-400 rounded-lg" 
-                   src="https://previews.dropbox.com/p/thumb/ACYiq88iSVxTYa-vn6lknE4Wko0m_d_yBZuk_CdKAo-i2J9Qvx_KpqrIzqWRPppKsGdt0Xuv4XhujeTbUIiEJ5zxYqVzcXW8z_sST15q4ZxXRnaN89zdGbqjstqDuiGShg0C0I_Vpg5sh60Zg_AhDI1W0Q9t_sdZ6wDFVYP8e2rL72wqdCvVquf3pVfQb5eo3-uAMzfqHtA7S6qLp9dK87lB1Bf3Pw9QhxP40NiV3SWzaftRBv8zQB3iBkFVsteRvNP9rZe1YtaGvRvo6k5qTdTyjQ6pinUudLl6ypgY0nqnvOc3FC7mIpe3Ldv8afpfUqQ/p.jpeg" 
+                   src="https://i.ibb.co/k4BnvTc/service-1-2.jpg" 
                    alt="Organización de Eventos" />
             </div>
             <div className="w-3/5 pl-4">
@@ -169,7 +174,7 @@ const Index = () => {
           <div className="flex items-center">
             <div className="w-2/5">
               <img className="w-full mb-3 lg:mb-0 transition-transform duration-300 ease-in-out hover:scale-105 hover:border-2 hover:border-yellow-400 rounded-lg" 
-                   src="https://previews.dropbox.com/p/thumb/ACbSc6OK6WNLddZNxFzfgaXrfxYxxrCtQCTO6_8_zzrEeF-pIj0yfTKsmianYQrjh7YTWCGZUwxNrbCILzjIlWimw6nHDlVCM7yM9QxsOUdlFIXh2gWFufebZsp-N0lt6YWTZsJuxxdwU24SFHSTk9Dqks4dqbe_bHG4vi-C_zLOD8_dq2V-zYxg0kvudVTdy_hVW6HR8u8qr_utmkCMjJm4czkYvvrA9K9yl14f3imiUMCeBZ4gt0tezdUoRotVrrCMsaeCjuPGbpNu5iZ-YPuccyKSFYIcBQSu7fCpDYDDghkCOnUMbB8WaD9azr3cfWM/p.jpeg" 
+                   src="https://i.ibb.co/XX5gPhT/service-2-1.jpg" 
                    alt="Reservas" />
             </div>
             <div className="w-3/5 pl-4">
@@ -185,7 +190,7 @@ const Index = () => {
           <div className="flex items-center">
             <div className="w-2/5">
               <img className="w-full mb-3 lg:mb-0 transition-transform duration-300 ease-in-out hover:scale-105 hover:border-2 hover:border-yellow-400 rounded-lg" 
-                   src="https://previews.dropbox.com/p/thumb/ACb37LXC13ffHKE6bJdCyZqBwJcuRdTKIRH0CSDZ0UB770BS-3Z0uaJ_2uaTaFnbI3X4GX0kDpnFgHIxb65Mq870euJrYmInY9rNA30vwl3iH3nX7DltOlWzSNSlb0D3j1_mXNezXbJjxR9Zhlol9CbYsqnh_TVQTuAtyNVp2U_uFVrAEy5Aic1ZTga8caHSmwIzfJmgdjsEXh2vIUU1jzxSm9DR6rB6v4TOiB7c-tYghCBKoiZedvDoMYAR8AL_bicWtAEhlFjqwx2S9A1FZ63DVys0IAUt3SYiiyNcuAoY3mMbvOmDsWpcQn7sFsvDxGE/p.jpeg" 
+                   src="https://i.ibb.co/sQJ2C9b/service-3-1.jpg" 
                    alt="Pedidos" />
             </div>
             <div className="w-3/5 pl-4">
@@ -201,7 +206,7 @@ const Index = () => {
           <div className="flex items-center">
             <div className="w-2/5">
               <img className="w-full mb-3 lg:mb-0 transition-transform duration-300 ease-in-out hover:scale-105 hover:border-2 hover:border-yellow-400 rounded-lg" 
-                   src="https://previews.dropbox.com/p/thumb/ACZFzc91ENQ8LjWgNe---0dCyRgFAc7LkrjnJlV-itXrrgGu2PHMliOyMWudh_yQ9yCEr_AJ6sUL7QrhoHO9Harxbr8ritPE11zTroClYTkMKmOYL-twRzpol6x7FH3m0GNkb5EirvNrqgm8NzA3Ts0CN2mlUoKq1S_4emSiqHJmxW-bMmUmuMv15-K9hItkFRSqI4eLDidvmRwZiAHbWJNKIQ3Gez69M8D4T9foXTeG-MIUsvdkZI_XDKfHUux1-DmapHvH2h-jIPpUOavjKtovXrL0kyqMjhjrokVw6zXKjK5kKQNAT_6zeP9kaftvZic/p.jpeg" 
+                   src="https://i.ibb.co/5x7QT98/service-4-1.jpg" 
                    alt="Disfruta con la Familia" />
             </div>
             <div className="w-3/5 pl-4">
@@ -234,7 +239,7 @@ const Index = () => {
         <div className="w-full lg:w-1/3 px-4 py-5 relative overflow-hidden rounded-lg">
           <img
             className="w-full h-auto object-cover transform transition-transform duration-300 ease-in-out hover:scale-110"
-            src="https://previews.dropbox.com/p/thumb/ACbJ0CamiYkPn4xE6w8ghTR3ElztqXgMaYm1OLxCY_e_0Fp_KY_rSo8hzqHKy9voSi8Df0u3tRrbdry9IkoLwLlwTD2NeiSmQ5p8n3iX2sbcbW9XBhQiH_X3W4Wus1k6VhzzYEmoj2ZFoO-jVVqPgH1Iwf08UNDpzgRvvJfF5MyEzX4ab3UB-DXWsZ_XqZ-9GEJ_5VpvLz0zEPEc_z6aWr5Pwmm_zMMdqU5w-q1JBZx_SebNF0xYbAzy_jtQEWQgcESKDIvcIvXT3l4wEibStO0ou8NecDGV9LGgDT5Ya9kaINU-DbHaAa2fmvTsfyCTsJ8/p.png"
+            src="https://i.ibb.co/ryV7zTy/about-1.png"
             alt="Sobre Nosotros"
           />
           <div className="absolute inset-0 bg-white bg-opacity-80 transition-transform duration-300 ease-in-out transform -translate-y-full hover:translate-y-0 flex items-center justify-center p-6">
@@ -394,6 +399,18 @@ const Index = () => {
                                     referrerPolicy="strict-origin-when-cross-origin" 
                                     allowFullScreen
                                 ></iframe>
+
+                                <Link
+                                      to="#" // Usamos "#" ya que el enlace real se maneja en onClick
+                                      onClick={handleClick}
+                                      className="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition transform hover:scale-110 duration-300 flex items-center justify-center"
+                                      aria-label="WhatsApp"
+                                    >
+                                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                                      </svg>
+                                </Link>
+
                             </div>
                         </div>
                     </div>
